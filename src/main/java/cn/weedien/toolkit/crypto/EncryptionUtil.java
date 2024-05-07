@@ -1,4 +1,6 @@
-package cn.weedien.crypto;
+package cn.weedien.toolkit.crypto;
+
+import cn.weedien.toolkit.encode.EncodingUtil;
 
 import java.nio.charset.StandardCharsets;
 
@@ -13,11 +15,11 @@ public class EncryptionUtil {
     }
 
     public static String encryptData(String pText, String password) throws Exception {
-        return CryptoUtil.hex(EncryptorAesGcm.encryptWithPassword(pText.getBytes(), password.toCharArray()));
+        return EncodingUtil.hexEncode(EncryptorAesGcm.encryptWithPassword(pText.getBytes(), password.toCharArray()));
     }
 
     public static String decryptData(String cText, String password) throws Exception {
-        return new String(EncryptorAesGcm.decryptWithPassword(CryptoUtil.hexToBytes(cText), password.toCharArray()), StandardCharsets.UTF_8);
+        return new String(EncryptorAesGcm.decryptWithPassword(EncodingUtil.hexDecode(cText), password.toCharArray()), StandardCharsets.UTF_8);
     }
 
 }

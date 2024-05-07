@@ -1,4 +1,4 @@
-package cn.weedien.crypto;
+package cn.weedien.toolkit.crypto;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
