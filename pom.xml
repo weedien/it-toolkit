@@ -63,7 +63,7 @@
                     <buildArgs>
                         <buildArg>-H:+AddAllCharsets</buildArg>
                         <buildArg>--strict-image-heap</buildArg>
-                        <!-- <buildArg>-march=native</buildArg> -->
+                        <buildArg>-march=native</buildArg>
                         <!-- <buildArg>-Ob</buildArg> -->
                     </buildArgs>
                 </configuration>
