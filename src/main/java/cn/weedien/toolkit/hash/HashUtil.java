@@ -1,8 +1,9 @@
 package cn.weedien.toolkit.hash;
 
+import cn.weedien.toolkit.encode.EncodingUtil;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 
 public class HashUtil {
 
@@ -71,7 +72,7 @@ public class HashUtil {
                 md.update(salt.getBytes());
             }
             byte[] hash = md.digest(input.getBytes());
-            return Base64.getEncoder().encodeToString(hash);
+            return EncodingUtil.hexEncode(hash);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("无法找到指定的哈希算法: " + algorithm, e);
         }

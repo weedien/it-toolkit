@@ -8,6 +8,7 @@ public enum CommandType {
     HASH("hash"),
     ENCODE("encode"),
     DECODE("decode"),
+    CONVERT("convert")
     ;
 
     private final String value;

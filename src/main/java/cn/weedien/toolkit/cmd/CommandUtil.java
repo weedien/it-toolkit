@@ -1,5 +1,6 @@
 package cn.weedien.toolkit.cmd;
 
+import cn.weedien.toolkit.cmd.args.ConversionArgs;
 import cn.weedien.toolkit.cmd.args.EncodingArgs;
 import cn.weedien.toolkit.cmd.args.EncryptionArgs;
 import cn.weedien.toolkit.cmd.args.HashArgs;
@@ -17,6 +18,7 @@ public class CommandUtil {
         HashArgs.register();
         EncryptionArgs.register();
         EncodingArgs.register();
+        ConversionArgs.register();
         // 帮助信息
         commands.put("help", CommandInfo.builder().commandName("help").simpleDesc("Show help information.").build());
         commands.put("", CommandInfo.builder().commandName("").simpleDesc("Show help information.").options(

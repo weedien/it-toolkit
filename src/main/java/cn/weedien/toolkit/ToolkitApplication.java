@@ -6,6 +6,7 @@ import cn.weedien.toolkit.cmd.CommandUtil;
 import cn.weedien.toolkit.cmd.core.CommandLine;
 import cn.weedien.toolkit.cmd.core.ParsingException;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Locale;
 
@@ -32,6 +33,12 @@ public class ToolkitApplication {
                 System.out.printf("Run 'tk help %s' for usage.%n", pe.getCommand());
             } else {
                 System.out.println("Run 'tk help' for usage.");
+            }
+        } catch (IOException ie) {
+            if (ie instanceof FileNotFoundException) {
+                System.out.println("File not found: " + ie.getMessage());
+            } else {
+                System.out.println("File read err: " + ie.getMessage());
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

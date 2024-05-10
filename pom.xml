@@ -60,12 +60,8 @@
                     <imageName>${project.build.finalName}</imageName>
                     <mainClass>cn.weedien.toolkit.ToolkitApplication</mainClass>
                     <skipTests>true</skipTests>
-                    <buildArgs>
-                        <buildArg>-H:+AddAllCharsets</buildArg>
-                        <buildArg>--strict-image-heap</buildArg>
-                        <buildArg>-march=native</buildArg>
-                        <!-- <buildArg>-Ob</buildArg> -->
-                    </buildArgs>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <buildArgs>${native.build.args}</buildArgs>
                 </configuration>
             </plugin>
             <plugin>
@@ -108,5 +104,25 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <native.build.args>--strict-image-heap -march=native</native.build.args>
+                <profileActive>prod</profileActive>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <native.build.args>--strict-image-heap -march=native -Ob</native.build.args>
+                <profileActive>dev</profileActive>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

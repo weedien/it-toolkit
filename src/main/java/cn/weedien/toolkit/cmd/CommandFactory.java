@@ -1,5 +1,6 @@
 package cn.weedien.toolkit.cmd;
 
+import cn.weedien.toolkit.cmd.args.ConversionArgs;
 import cn.weedien.toolkit.cmd.args.EncodingArgs;
 import cn.weedien.toolkit.cmd.args.EncryptionArgs;
 import cn.weedien.toolkit.cmd.args.HashArgs;
@@ -34,6 +35,8 @@ public class CommandFactory {
         } else if (Objects.equals(cmd.getCommandName(), CommandType.DECODE.getValue())) {
             EncodingArgs encodingArgs = EncodingArgs.getInstance(cmd);
             return new DecodingCommand(encodingArgs);
+        } else if (Objects.equals(cmd.getCommandName(), CommandType.CONVERT.getValue())) {
+            return new ConversionCommand(ConversionArgs.getInstance(cmd));
         } else {
             throw new ParsingException("Command not found: " + cmd.getCommandName());
         }
